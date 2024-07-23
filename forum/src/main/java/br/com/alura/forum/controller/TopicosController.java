@@ -17,6 +17,7 @@ import br.com.alura.forum.controller.form.TopicoForm;
 import br.com.alura.forum.modelo.Topico;
 import br.com.alura.forum.repository.CursoRepository;
 import br.com.alura.forum.repository.TopicoRepository;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/topicos")
@@ -41,7 +42,7 @@ public class TopicosController {
 	
 	@PostMapping
 	public ResponseEntity<TopicoDto> cadastrar(
-			@RequestBody TopicoForm form, UriComponentsBuilder uriBuilder) {
+			@RequestBody @Valid TopicoForm form, UriComponentsBuilder uriBuilder) {
 		
 		Topico topico = form.converter(cursoRepository);
 		
